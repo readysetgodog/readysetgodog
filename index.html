@@ -1,60 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ready Set Go Dog</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap');
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{--brand:#2D6A4F;--brand-light:#E8F5EE;--brand-mid:#52B788;--accent:#F4A261;--accent-light:#FFF3E8;}
-body{font-family:'DM Sans',sans-serif;background:#f5f5f5;}
-.app{max-width:680px;margin:0 auto;background:white;min-height:100vh;}
+body{font-family:'DM Sans',sans-serif;background:#f5f5f5;margin:0;padding:0;}
+.app{max-width:680px;margin:0 auto;background:white;min-height:100vh;box-shadow:0 0 20px rgba(0,0,0,0.1);}
 .header{padding:1.25rem 1.5rem 0;}
 .logo-row{display:flex;align-items:center;gap:6px;}
-.logo{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--brand);letter-spacing:-0.5px;}
-.paw-icon{color:var(--accent);font-size:26px;line-height:1;margin-top:2px;}
-.tagline{font-size:13px;color:#666;margin-top:2px;}
+.logo{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:#2D6A4F;letter-spacing:-0.5px;}
+.paw-icon{color:#F4A261;font-size:26px;line-height:1;margin-top:2px;}
+.tagline{font-size:13px;color:#888;margin-top:2px;}
 .search-bar{display:flex;gap:8px;margin:1rem 1.5rem;}
 .search-bar input{flex:1;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:white;color:#333;}
-.search-bar input:focus{outline:none;border-color:var(--brand);}
-.search-bar button{padding:10px 18px;background:var(--brand);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;}
-.search-bar button:hover{background:#1f4f3a;}
-.locate-btn{padding:10px 12px;background:var(--brand-light);color:var(--brand);border:1px solid var(--brand-mid);border-radius:8px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:4px;}
-.tabs{display:flex;border-bottom:1px solid #eee;margin:0 1.5rem;}
-.tab{padding:10px 16px;font-size:14px;font-weight:500;cursor:pointer;color:#888;border-bottom:2px solid transparent;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:color 0.15s;}
-.tab:hover{color:#333;}
-.tab.active{color:var(--brand);border-bottom-color:var(--brand);}
+.search-bar input:focus{outline:none;border-color:#2D6A4F;}
+.search-bar button.search-btn{padding:10px 18px;background:#2D6A4F;color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;}
+.search-bar button.search-btn:hover{background:#1f4f3a;}
+.locate-btn{padding:10px 12px;background:#E8F5EE;color:#2D6A4F;border:1px solid #52B788;border-radius:8px;font-size:18px;cursor:pointer;}
+.tabs{display:flex;border-bottom:1px solid #eee;margin:0 1.5rem;overflow-x:auto;}
+.tab{padding:10px 16px;font-size:14px;font-weight:500;cursor:pointer;color:#888;border-bottom:2px solid transparent;display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.tab.active{color:#2D6A4F;border-bottom-color:#2D6A4F;}
 .content{padding:1rem 1.5rem;}
 .panel{display:none;}
 .panel.active{display:block;}
-.card{background:white;border:1px solid #eee;border-radius:12px;padding:1rem 1.25rem;margin-bottom:10px;transition:border-color 0.15s;}
-.card:hover{border-color:var(--brand-mid);}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;}
-.card-name{font-family:'Fraunces',serif;font-size:17px;font-weight:500;color:#222;margin-bottom:3px;}
-.card-address{font-size:13px;color:#888;}
-.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
-.badge{font-size:12px;padding:3px 10px;border-radius:20px;font-weight:500;}
-.badge-green{background:var(--brand-light);color:var(--brand);}
-.badge-featured{background:#FFF3E8;color:#b05c14;border:1px solid #F4A261;}
-.stars{display:flex;align-items:center;gap:4px;font-size:13px;color:#888;}
-.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid #eee;}
-.hours{font-size:13px;color:#888;display:flex;align-items:center;gap:5px;}
-.website-link{font-size:13px;color:var(--brand);font-weight:500;text-decoration:none;display:flex;align-items:center;gap:4px;}
-.website-link:hover{text-decoration:underline;}
-.open-pill{font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;}
-.open{background:#d1f5e3;color:#0d6e3b;}
-.closed{background:#fde8e8;color:#a33030;}
-.loading-state{text-align:center;padding:3rem 1rem;color:#888;font-size:14px;}
-.empty-state{text-align:center;padding:3rem 1rem;}
-.empty-state p{font-size:15px;color:#888;}
-.empty-state strong{display:block;font-family:'Fraunces',serif;font-size:18px;color:#222;margin-bottom:6px;}
-.shop-banner{background:linear-gradient(135deg,var(--brand-light) 0%,var(--accent-light) 100%);border:1px solid var(--brand-mid);border-radius:12px;padding:1.5rem;text-align:center;}
-.shop-banner h2{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--brand);margin-bottom:8px;}
-.shop-banner p{font-size:14px;color:#666;line-height:1.6;}
-.result-count{font-size:13px;color:#888;margin-bottom:12px;}
-.featured-banner{background:linear-gradient(135deg,#FFF3E8,#fff8f3);border:1px solid #F4A261;border-radius:12px;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.featured-banner{background:linear-gradient(135deg,#FFF3E8,#fff8f3);border:1px solid #F4A261;border-radius:12px;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 .featured-banner-text{font-size:13px;color:#7a4010;line-height:1.5;}
 .featured-banner-text strong{display:block;font-size:14px;color:#b05c14;margin-bottom:2px;}
-.get-featured-btn{padding:9px 16px;background:var(--accent);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
-.get-featured-btn:hover{background:#e08040;}
+.get-featured-btn{padding:9px 16px;background:#F4A261;color:white;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;}
+.card{background:white;border:1px solid #eee;border-radius:12px;padding:1rem 1.25rem;margin-bottom:10px;}
+.card:hover{border-color:#52B788;}
+.card-name{font-family:'Fraunces',serif;font-size:17px;font-weight:500;color:#222;margin-bottom:3px;}
+.card-address{font-size:13px;color:#888;margin-bottom:8px;}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;}
+.open-pill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.open{background:#d1f5e3;color:#0d6e3b;}
+.closed{background:#fde8e8;color:#a33030;}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid #eee;flex-wrap:wrap;gap:8px;}
+.rating{font-size:13px;color:#888;}
+.website-link{font-size:13px;color:#2D6A4F;font-weight:500;text-decoration:none;}
+.website-link:hover{text-decoration:underline;}
+.empty-state{text-align:center;padding:3rem 1rem;}
+.empty-state .icon{font-size:40px;color:#52B788;display:block;margin-bottom:12px;}
+.empty-state strong{display:block;font-family:'Fraunces',serif;font-size:18px;color:#222;margin-bottom:6px;}
+.empty-state p{font-size:15px;color:#888;}
+.loading-state{text-align:center;padding:3rem 1rem;color:#888;font-size:15px;}
+.loading-icon{font-size:36px;color:#52B788;display:block;margin-bottom:12px;animation:bounce 1s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.result-count{font-size:13px;color:#888;margin-bottom:12px;}
+.shop-banner{background:linear-gradient(135deg,#E8F5EE,#FFF3E8);border:1px solid #52B788;border-radius:12px;padding:2rem;text-align:center;}
+.shop-banner h2{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#2D6A4F;margin-bottom:8px;}
+.shop-banner p{font-size:14px;color:#666;}
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+</head>
+<body>
 <div class="app">
   <div class="header">
     <div class="logo-row">
@@ -65,46 +67,46 @@ body{font-family:'DM Sans',sans-serif;background:#f5f5f5;}
   </div>
   <div class="search-bar">
     <input type="text" id="locationInput" placeholder="Enter city, zip code, or address..."/>
-    <button class="locate-btn" onclick="useMyLocation()" title="Use my location"><i class="ti ti-current-location"></i></button>
-    <button onclick="doSearch()"><i class="ti ti-search" style="margin-right:4px"></i>Search</button>
+    <button class="locate-btn" onclick="useMyLocation()" title="Use my location">📍</button>
+    <button class="search-btn" onclick="doSearch()">🔍 Search</button>
   </div>
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('parks',this)"><i class="ti ti-trees"></i>Dog Parks</div>
-    <div class="tab" onclick="switchTab('groomers',this)"><i class="ti ti-scissors"></i>Groomers</div>
-    <div class="tab" onclick="switchTab('vets',this)"><i class="ti ti-stethoscope"></i>Vets</div>
-    <div class="tab" onclick="switchTab('shop',this)"><i class="ti ti-shopping-bag"></i>Shop</div>
+    <div class="tab active" onclick="switchTab('parks',this)">🌳 Dog Parks</div>
+    <div class="tab" onclick="switchTab('groomers',this)">✂️ Groomers</div>
+    <div class="tab" onclick="switchTab('vets',this)">🩺 Vets</div>
+    <div class="tab" onclick="switchTab('shop',this)">🛍️ Shop</div>
   </div>
   <div class="content">
     <div class="panel active" id="panel-parks">
       <div class="featured-banner">
-        <div class="featured-banner-text"><strong>⭐ Get your business featured</strong>Reach dog owners searching in your area. Sponsored listings appear at the top of results.</div>
-        <a class="get-featured-btn" href="https://tally.so/r/kdvOKj" target="_blank"><i class="ti ti-star"></i>Get Featured</a>
+        <div class="featured-banner-text"><strong>⭐ Get your business featured</strong>Reach dog owners searching in your area.</div>
+        <a class="get-featured-btn" href="https://tally.so/r/kdvOKj" target="_blank">⭐ Get Featured</a>
       </div>
-      <div class="empty-state" id="parks-empty"><strong>Find dog parks near you</strong><p>Enter your location above to discover off-leash parks, trails & dog-friendly green spaces nearby.</p></div>
-      <div id="parks-loading" class="loading-state" style="display:none">Sniffing out dog parks...</div>
+      <div class="empty-state" id="parks-empty"><span class="icon">🌳</span><strong>Find dog parks near you</strong><p>Enter your location above to discover off-leash parks & trails nearby.</p></div>
+      <div id="parks-loading" class="loading-state" style="display:none"><span class="loading-icon">🐾</span>Sniffing out dog parks...</div>
       <div id="parks-results"></div>
     </div>
     <div class="panel" id="panel-groomers">
       <div class="featured-banner">
-        <div class="featured-banner-text"><strong>⭐ Get your business featured</strong>Reach dog owners searching in your area. Sponsored listings appear at the top of results.</div>
-        <a class="get-featured-btn" href="https://tally.so/r/kdvOKj" target="_blank"><i class="ti ti-star"></i>Get Featured</a>
+        <div class="featured-banner-text"><strong>⭐ Get your business featured</strong>Reach dog owners searching in your area.</div>
+        <a class="get-featured-btn" href="https://tally.so/r/kdvOKj" target="_blank">⭐ Get Featured</a>
       </div>
-      <div class="empty-state" id="groomers-empty"><strong>Find groomers near you</strong><p>Search for top-rated groomers, salons & mobile grooming services in your area.</p></div>
-      <div id="groomers-loading" class="loading-state" style="display:none">Tracking down top groomers...</div>
+      <div class="empty-state" id="groomers-empty"><span class="icon">✂️</span><strong>Find groomers near you</strong><p>Search for top-rated groomers & salons in your area.</p></div>
+      <div id="groomers-loading" class="loading-state" style="display:none"><span class="loading-icon">🐾</span>Tracking down top groomers...</div>
       <div id="groomers-results"></div>
     </div>
     <div class="panel" id="panel-vets">
       <div class="featured-banner">
-        <div class="featured-banner-text"><strong>⭐ Get your business featured</strong>Reach dog owners searching in your area. Sponsored listings appear at the top of results.</div>
-        <a class="get-featured-btn" href="https://tally.so/r/kdvOKj" target="_blank"><i class="ti ti-star"></i>Get Featured</a>
+        <div class="featured-banner-text"><strong>⭐ Get your business featured</strong>Reach dog owners searching in your area.</div>
+        <a class="get-featured-btn" href="https://tally.so/r/kdvOKj" target="_blank">⭐ Get Featured</a>
       </div>
-      <div class="empty-state" id="vets-empty"><strong>Find veterinarians near you</strong><p>Locate trusted vets, animal hospitals & emergency clinics close to home.</p></div>
-      <div id="vets-loading" class="loading-state" style="display:none">Locating veterinarians...</div>
+      <div class="empty-state" id="vets-empty"><span class="icon">🩺</span><strong>Find veterinarians near you</strong><p>Locate trusted vets & animal hospitals close to home.</p></div>
+      <div id="vets-loading" class="loading-state" style="display:none"><span class="loading-icon">🐾</span>Locating veterinarians...</div>
       <div id="vets-results"></div>
     </div>
     <div class="panel" id="panel-shop">
       <div class="shop-banner">
-        <div style="font-size:32px;margin-bottom:12px;">🐾</div>
+        <div style="font-size:40px;margin-bottom:12px;">🐾</div>
         <h2>Shop is Coming Soon</h2>
         <p>We're carefully curating the best products for your pup.</p>
       </div>
@@ -112,35 +114,100 @@ body{font-family:'DM Sans',sans-serif;background:#f5f5f5;}
   </div>
 </div>
 <script>
-var GOOGLE_API_KEY = 'YOUR_API_KEY_HERE';
-function switchTab(tab,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+tab).classList.add('active');}
-function useMyLocation(){if(!navigator.geolocation){alert('Geolocation not supported.');return;}document.getElementById('locationInput').value='Detecting location...';navigator.geolocation.getCurrentPosition(pos=>{var lat=pos.coords.latitude,lng=pos.coords.longitude;document.getElementById('locationInput').value=lat.toFixed(4)+', '+lng.toFixed(4);doSearch();},()=>{document.getElementById('locationInput').value='';alert('Could not get location. Please enter manually.');});}
-function doSearch(){
-  var loc=document.getElementById('locationInput').value.trim();
-  if(!loc||loc==='Detecting location...'){alert('Please enter a location to search.');return;}
-  ['parks','groomers','vets'].forEach(tab=>{document.getElementById(tab+'-empty').style.display='none';document.getElementById(tab+'-loading').style.display='block';document.getElementById(tab+'-results').innerHTML='';});
-  geocode(loc,function(lat,lng){
-    searchPlaces('dog park',lat,lng,'parks');
-    searchPlaces('dog groomer',lat,lng,'groomers');
-    searchPlaces('veterinarian',lat,lng,'vets');
+var API_KEY = 'YOUR_API_KEY_HERE';
+ 
+function switchTab(tab,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+}
+ 
+function useMyLocation(){
+  if(!navigator.geolocation){alert('Geolocation not supported.');return;}
+  document.getElementById('locationInput').value='Detecting location...';
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var lat=pos.coords.latitude,lng=pos.coords.longitude;
+    document.getElementById('locationInput').value=lat.toFixed(4)+','+lng.toFixed(4);
+    runSearch(lat,lng);
+  },function(){
+    document.getElementById('locationInput').value='';
+    alert('Could not get location. Please enter manually.');
   });
 }
-function geocode(address,cb){
-  fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURIComponent(address)+'&key='+GOOGLE_API_KEY)
-  .then(r=>r.json()).then(d=>{if(d.results&&d.results.length>0){var loc=d.results[0].geometry.location;cb(loc.lat,loc.lng);}else{alert('Location not found. Please try again.');}});
+ 
+function doSearch(){
+  var loc=document.getElementById('locationInput').value.trim();
+  if(!loc){alert('Please enter a location.');return;}
+  
+  // Check if it's already coordinates
+  var coordMatch=loc.match(/^(-?\d+\.?\d*),\s*(-?\d+\.?\d*)$/);
+  if(coordMatch){
+    runSearch(parseFloat(coordMatch[1]),parseFloat(coordMatch[2]));
+    return;
+  }
+  
+  // Use Google Maps JavaScript API for geocoding
+  var geocoder=new google.maps.Geocoder();
+  geocoder.geocode({address:loc},function(results,status){
+    if(status==='OK'){
+      var lat=results[0].geometry.location.lat();
+      var lng=results[0].geometry.location.lng();
+      runSearch(lat,lng);
+    } else {
+      alert('Location not found. Please try a city name or zip code.');
+    }
+  });
 }
-function searchPlaces(query,lat,lng,tab){
-  var url='https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+lat+','+lng+'&radius=8000&keyword='+encodeURIComponent(query)+'&key='+GOOGLE_API_KEY;
-  fetch(url).then(r=>r.json()).then(d=>{
-    document.getElementById(tab+'-loading').style.display='none';
-    if(!d.results||d.results.length===0){document.getElementById(tab+'-empty').style.display='block';return;}
-    var html='<div class="result-count">'+d.results.length+' results found</div>';
-    d.results.slice(0,8).forEach(place=>{
-      var stars=place.rating?'⭐ '+place.rating.toFixed(1)+(place.user_ratings_total?' ('+place.user_ratings_total+')':''):'';
-      var open=place.opening_hours?(place.opening_hours.open_now?'<span class="open-pill open">Open now</span>':'<span class="open-pill closed">Closed</span>'):'';
-      html+='<div class="card"><div class="card-top"><div><div class="card-name">'+place.name+'</div><div class="card-address">'+place.vicinity+'</div></div>'+open+'</div><div class="badge-row"><span class="badge badge-green">'+stars+'</span></div><div class="card-footer"><div class="hours">📍 '+place.vicinity+'</div><a class="website-link" href="https://www.google.com/maps/place/?q=place_id:'+place.place_id+'" target="_blank">View on Maps</a></div></div>';
+ 
+function runSearch(lat,lng){
+  ['parks','groomers','vets'].forEach(function(tab){
+    document.getElementById(tab+'-empty').style.display='none';
+    document.getElementById(tab+'-loading').style.display='block';
+    document.getElementById(tab+'-results').innerHTML='';
+  });
+  
+  var location=new google.maps.LatLng(lat,lng);
+  var service=new google.maps.places.PlacesService(document.createElement('div'));
+  
+  var searches=[
+    {keyword:'dog park',tab:'parks'},
+    {keyword:'dog groomer',tab:'groomers'},
+    {keyword:'veterinarian',tab:'vets'}
+  ];
+  
+  searches.forEach(function(s){
+    service.nearbySearch({
+      location:location,
+      radius:8000,
+      keyword:s.keyword
+    },function(results,status){
+      document.getElementById(s.tab+'-loading').style.display='none';
+      if(status===google.maps.places.PlacesServiceStatus.OK&&results.length>0){
+        renderCards(results.slice(0,8),s.tab);
+      } else {
+        document.getElementById(s.tab+'-empty').style.display='block';
+      }
     });
-    document.getElementById(tab+'-results').innerHTML=html;
-  }).catch(()=>{document.getElementById(tab+'-loading').style.display='none';document.getElementById(tab+'-empty').style.display='block';});
+  });
+}
+ 
+function renderCards(places,tab){
+  var html='<div class="result-count">'+places.length+' results found</div>';
+  places.forEach(function(place){
+    var openStatus=place.opening_hours?place.opening_hours.open_now:null;
+    var openBadge=openStatus===true?'<span class="open-pill open">Open now</span>':openStatus===false?'<span class="open-pill closed">Closed</span>':'';
+    var rating=place.rating?'⭐ '+place.rating.toFixed(1)+(place.user_ratings_total?' ('+place.user_ratings_total+')':''):'No ratings yet';
+    var mapsLink='https://www.google.com/maps/place/?q=place_id:'+place.place_id;
+    html+='<div class="card">';
+    html+='<div class="card-top"><div><div class="card-name">'+place.name+'</div><div class="card-address">'+place.vicinity+'</div></div>'+openBadge+'</div>';
+    html+='<div class="card-footer"><span class="rating">'+rating+'</span><a class="website-link" href="'+mapsLink+'" target="_blank">View on Maps →</a></div>';
+    html+='</div>';
+  });
+  document.getElementById(tab+'-results').innerHTML=html;
 }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkJCEFGm1BbEkE5soVr95UZAIwzZv6mj4
+&libraries=places&callback=Function.prototype" async defer></script>
+</body>
+</html>
